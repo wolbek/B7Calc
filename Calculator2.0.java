@@ -108,7 +108,7 @@ class List
         return -1; 
     } 
 
-    int endBP(String exp)//gives corresponding ending endBP position, E.g if exp=(2+3)*4 then j=4
+    int endBP(String exp)//gives corresponding ending bracket(endBP) position, E.g if exp=(2+3)*4 then j=4
     {
     	int i=exp.indexOf('(');
         char c;int j=0,inc=0;
@@ -128,7 +128,7 @@ class List
         return j;    
     }
 
-    int sL()//sL: returns number of elements in stack
+    int sL()//stack length: returns number of elements in stack
     {
         int len=0;
         node t=top;
@@ -321,7 +321,7 @@ class List
             ans=ans.multiply(BigDecimal.valueOf(i));
         return ans;
     }    
-    BigDecimal fact1(int num)//for asin
+    BigDecimal fact1(int num)//for asin, gives factorial of odd numbers.
     {
         BigDecimal ans=new BigDecimal("1");
         for(int i=1;i<=num;i+=2)        
@@ -329,7 +329,7 @@ class List
         return ans;
     }
 
-    BigDecimal fact2(int num)//for asin
+    BigDecimal fact2(int num)//for asin, gives factorial of even number.
     {
         BigDecimal ans=new BigDecimal("1");
         for(int i=2;i<=num;i+=2)        
@@ -337,9 +337,9 @@ class List
         return ans;
     }   
     
-    String iTP(String exp,int slen) //Takes operators in stack
+    String iTP(String exp,int slen) //Infix to postfix: Takes operators in stack
     {   	
-        String str ="";int pos=0;//pos stores starting index of a term, First i gets changed then pos gets changed          
+        String str ="";int pos=0;//pos stores starting index of a term         
         for (int i = 0; i<exp.length(); ++i) 
         { 
             char c = exp.charAt(i);        
@@ -363,7 +363,7 @@ class List
             {                          	
                 while (!isEmpty() && !(peek().equals("("))) 
                     str += pop();       
-                pop();//endBP (which is not of sin log) does not get included in iTP string               
+                pop();//ending bracket (which is not of sin log) does not get included in iTP string               
             } 
             else 
             { 
@@ -378,7 +378,7 @@ class List
         return str;     	
     }     
 
-    String eP(String exp,int fix,boolean rad) //Takes numbers in stack
+    String eP(String exp,int fix,boolean rad) //Evaluate Postfix, Takes numbers in stack
     {         
     	try {
         int pos=0;//stores the starting index of a digit   
@@ -579,7 +579,7 @@ class List
     String retAns(int fix)
     {   
     	try {
-    	BigDecimal numAnswer=new BigDecimal(answer);// When invalid expression, the answer stored "" and if we convert it to BigDecimal we get an error.
+    	BigDecimal numAnswer=new BigDecimal(answer);// When invalid expression, the answer stored is "" and if we convert it to BigDecimal we get an error.
     	return numAnswer.setScale(fix,RoundingMode.HALF_UP).toString();
     	}
     	catch(Exception e)
