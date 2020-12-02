@@ -320,7 +320,7 @@ class List
             ans=ans.multiply(BigDecimal.valueOf(i));
         return ans;
     }    
-    BigDecimal fact1(int num)//for asin, gives factorial of odd numbers.
+    BigDecimal fact1(long num)//for asin, gives factorial of odd numbers.
     {
         BigDecimal ans=new BigDecimal("1");
         for(int i=1;i<=num;i+=2)        
@@ -328,7 +328,7 @@ class List
         return ans;
     }
 
-    BigDecimal fact2(int num)//for asin, gives factorial of even number.
+    BigDecimal fact2(long num)//for asin, gives factorial of even number.
     {
         BigDecimal ans=new BigDecimal("1");
         for(int i=2;i<=num;i+=2)        
@@ -562,7 +562,7 @@ class List
             }
             else if(c=='\u03C0')
             {                
-                push(Double.toString(Math.PI));
+                push(Double.toString(Math.PI));                
                 i=exp.indexOf('q',i);
                 pos=i+1;
             }
