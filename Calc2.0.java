@@ -376,13 +376,13 @@ class List
             str += pop();           
         return str;    	
     }     
-
+    
     String eP(String exp,int fix,boolean rad) //Evaluate Postfix: Takes numbers in stack
-    {         
+    {             	
     	try {
         int pos=0;//stores the starting index of a digit   
         fix=fix+15;//15 is perfect, gives accurate answers.
-       
+      
         for(int i=0;i<exp.length();i++) 
         { 
             char c=exp.charAt(i);            
@@ -510,7 +510,7 @@ class List
                 pos=i+1;                
             }
 
-            else if(c=='+' || c=='-'|| c=='/'||c=='*')
+            else if(c=='+' || c=='-'|| c=='/'||c=='*'||c=='^')
             { 
                 pos++;
                 BigDecimal val2=new BigDecimal(pop());               
@@ -532,19 +532,15 @@ class List
                     case '*': 
                     push((val1.multiply(val2)).toString()); 
                     break; 
+                    
+                    case '^': 
+                    	if(val2.toString().contains("."))                 	
+                            push(decPow(val1,val2,fix).toString());          
+                        else                          	
+                            push(intPow(val1,val2,fix).toString()); 
+                        break;
                 } 
-            } 
-            else if(c=='^')
-            {                	
-                pos++;
-                BigDecimal val2=new BigDecimal(pop());
-                BigDecimal val1=new BigDecimal(pop()); 
-                if(val2.toString().contains("."))                 	
-                    push(decPow(val1,val2,fix).toString());          
-                else                          	
-                    push(intPow(val1,val2,fix).toString());                 
-            }
-          
+            }                     
             else if(c=='!')
             {
                 pos++;                
